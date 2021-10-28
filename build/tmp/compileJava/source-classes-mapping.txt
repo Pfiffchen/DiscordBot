@@ -1,0 +1,8 @@
+io/pfiff/dalalaitha/commands/ShittyReply.java
+ io.pfiff.dalalaitha.commands.ShittyReply
+io/pfiff/dalalaitha/commands/Command.java
+ io.pfiff.dalalaitha.commands.Command
+io/pfiff/dalalaitha/Main.java
+ io.pfiff.dalalaitha.Main
+io/pfiff/dalalaitha/commands/penis.java
+ io.pfiff.dalalaitha.commands.penis
