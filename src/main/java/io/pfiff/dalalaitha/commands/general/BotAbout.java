@@ -1,6 +1,7 @@
 package io.pfiff.dalalaitha.commands.general;
 
 import io.pfiff.dalalaitha.Config;
+import io.pfiff.dalalaitha.commands.Category;
 import io.pfiff.dalalaitha.commands.Command;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDAInfo;
@@ -14,6 +15,16 @@ public class BotAbout implements Command {
     @Override
     public String getName() {
         return "about";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Sends bot's info";
+    }
+
+    @Override
+    public Category getCategory() {
+        return Category.GENERAL;
     }
 
     @Override
@@ -31,7 +42,7 @@ public class BotAbout implements Command {
             event.getJDA().getRestPing().queue(restPing -> {
                 var embed = new EmbedBuilder()
                         .setThumbnail(thumbnail + "?size=512")
-                        .setColor(Config.ARCTIC_COLOR)
+                        .setColor(Config.SUCCESSFUL)
                         .setAuthor(event.getJDA().getSelfUser().getName(), null, icon)
                         .appendDescription(event.getJDA().getSelfUser().getName() + " is a modern Discord multi-purpose 100% Kotlin-coded bot that currently relies mostly on its musical functionality\n" + "[Invite Link](" + Config.INVITE_LINK + ")")
                         .addField("Owner:", appInfo.getOwner().getAsTag(), false)

@@ -22,17 +22,24 @@ public class CommandHandler extends ListenerAdapter{
             new ServerIcon(),
             new UserAvatar(),
             new Shutdown(),
-            new BotAbout()
+            new BotAbout(),
+            new Help()
     ));
     @Override
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;
 
-        String[] args = event.getMessage().getContentRaw().split(" ", 1);
+        String[] args = event.getMessage().getContentRaw().split(" ", 2);
         if ( !event.getMessage().getContentRaw().startsWith(Config.PREFIX)) { return;}
         String name = args[0].substring(Config.PREFIX.length());
         Optional<Command> cmd = COMMANDS.stream().filter(c -> c.getName().equalsIgnoreCase(name)).findFirst();
-        cmd.ifPresent(command -> command.invoke(event, args.length > 1 ? args[1] : ""));
+        cmd.ifPresent(command -> {
+            if (command.getCategory() == Category.DEVELOPER && event.getAuthor().getIdLong() != 837650460387180544L) {
+                event.getChannel().sendMessage("tvoya mat' sosala kopchenie huyi").queue();
+                return;
+            }
+                command.invoke(event, args.length > 1 ? args[1] : "");
+        });
 
 
     }

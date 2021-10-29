@@ -21,7 +21,7 @@ repositories {
 dependencies {
     implementation "net.dv8tion:JDA:$jdaVersion"
     implementation "ch.qos.logback:logback-classic:1.2.3"
-
+    implementation "org.apache.commons:commons-lang3:3.11"
 }
 
 compileJava.options.encoding = 'UTF-8'
