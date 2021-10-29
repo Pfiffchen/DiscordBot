@@ -26,7 +26,7 @@ public class UserAvatar implements Command {
     public void invoke(GuildMessageReceivedEvent event, String args) {
         var avatar = event.getAuthor().getEffectiveAvatarUrl() + "?size=2048";
         var embed = new EmbedBuilder()
-                .setColor(Config.SUCCESSFUL)
+                .setColor(Config.SUCCESS)
                 .setImage(avatar)
                 .setAuthor(event.getAuthor().getAsTag(), null, avatar)
                 .appendDescription(String.format("**[Profile Picture URL](%s)**", avatar))

@@ -33,7 +33,7 @@ public class Uptime implements Command {
         var m = (int) ((secs - (h * 3600)) / 60);
         var s = (int) (secs - (h * 3600) - m * 60);
         var embed = new EmbedBuilder()
-                .setColor(Config.SUCCESSFUL)
+                .setColor(Config.SUCCESS)
                 .setTitle("Uptime")
                 .appendDescription(String.format("%02d:%02d:%02d", h,m,s))
                 .build();

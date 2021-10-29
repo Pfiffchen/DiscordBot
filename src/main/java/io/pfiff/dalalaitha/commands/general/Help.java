@@ -10,7 +10,6 @@ import net.dv8tion.jda.api.entities.SelfUser;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Locale;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -36,16 +35,23 @@ public class Help implements Command {
             event.getChannel().sendMessageEmbeds(getCommandList(event.getJDA().getSelfUser())).queue();
             return;
         }
+
+        var embed = new EmbedBuilder()
+                .setColor(Config.FAILURE)
+                .setAuthor("Failure!")
+                .setDescription("No command has been found by the query!")
+                .build();
+
         var command = CommandHandler.COMMANDS.stream().filter(c -> c.getName().equalsIgnoreCase(args)).findAny();
         command.ifPresentOrElse(
                 c -> event.getChannel().sendMessageEmbeds(getCommandHelp(c, event.getJDA().getSelfUser())).queue(),
-                () -> event.getChannel().sendMessage("No command has been found by the query!").queue());
+                () -> event.getChannel().sendMessageEmbeds(embed).queue());
     }
 
     private MessageEmbed getCommandList(SelfUser bot) {
         var embed = new EmbedBuilder()
                 .setAuthor(String.format("%s Help", bot.getName()), null, bot.getEffectiveAvatarUrl())
-                .setColor(Config.SUCCESSFUL);
+                .setColor(Config.SUCCESS);
         var grouped = CommandHandler.COMMANDS
                 .stream()
                 .collect(Collectors.groupingBy(c -> c.getCategory().name()));
@@ -60,7 +66,7 @@ public class Help implements Command {
     private MessageEmbed getCommandHelp(Command cmd, SelfUser bot) {
          return new EmbedBuilder()
                 .setAuthor(Config.PREFIX + cmd.getName(), null, bot.getEffectiveAvatarUrl())
-                .setColor(Config.SUCCESSFUL)
+                .setColor(Config.SUCCESS)
                 .setDescription(cmd.getDescription())
                 .addField("Category", StringUtils.capitalize(cmd.getCategory().name().toLowerCase()), true).build();
     }

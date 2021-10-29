@@ -7,7 +7,7 @@ mainClassName = 'io.pfiff.dalalaitha.Main'
 group = 'io.pfiff.dalalaitha'
 
 version '1.0'
-def jdaVersion = '4.3.0_297'
+def jdaVersion = '4.3.0_339'
 
 sourceCompatibility = targetCompatibility = 15
 

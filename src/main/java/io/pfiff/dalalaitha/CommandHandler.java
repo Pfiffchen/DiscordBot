@@ -4,6 +4,7 @@ import io.pfiff.dalalaitha.commands.*;
 import io.pfiff.dalalaitha.commands.developer.*;
 import io.pfiff.dalalaitha.commands.fun.*;
 import io.pfiff.dalalaitha.commands.general.*;
+import io.pfiff.dalalaitha.commands.info.ServerInfo;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +24,8 @@ public class CommandHandler extends ListenerAdapter{
             new UserAvatar(),
             new Shutdown(),
             new BotAbout(),
-            new Help()
+            new Help(),
+            new ServerInfo()
     ));
     @Override
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {

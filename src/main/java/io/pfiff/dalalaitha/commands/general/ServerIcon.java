@@ -28,7 +28,7 @@ public class ServerIcon implements Command {
         if (icon != null) {
             icon += "?size=2048";
             var embed = new EmbedBuilder()
-                    .setColor(Config.SUCCESSFUL)
+                    .setColor(Config.SUCCESS)
                     .setImage(icon)
                     .setAuthor(event.getGuild().getName(), null, icon)
                     .appendDescription(String.format("**[Server Icon URL](%s)**", icon))

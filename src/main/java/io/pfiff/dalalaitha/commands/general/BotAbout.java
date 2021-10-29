@@ -42,7 +42,7 @@ public class BotAbout implements Command {
             event.getJDA().getRestPing().queue(restPing -> {
                 var embed = new EmbedBuilder()
                         .setThumbnail(thumbnail + "?size=512")
-                        .setColor(Config.SUCCESSFUL)
+                        .setColor(Config.SUCCESS)
                         .setAuthor(event.getJDA().getSelfUser().getName(), null, icon)
                         .appendDescription(event.getJDA().getSelfUser().getName() + " is a modern Discord multi-purpose 100% Kotlin-coded bot that currently relies mostly on its musical functionality\n" + "[Invite Link](" + Config.INVITE_LINK + ")")
                         .addField("Owner:", appInfo.getOwner().getAsTag(), false)

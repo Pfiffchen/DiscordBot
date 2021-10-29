@@ -28,7 +28,7 @@ public class Ping implements Command {
         var gatewayPing = event.getJDA().getGatewayPing();
         event.getJDA().getRestPing().queue(restPing -> {
             var embed = new EmbedBuilder()
-                    .setColor(Config.SUCCESSFUL)
+                    .setColor(Config.SUCCESS)
                     .addField("Rest Ping", String.format("%d ms", restPing), true)
                     .addField("Gateway Ping", String.format("%d ms", gatewayPing), true)
                     .build();
